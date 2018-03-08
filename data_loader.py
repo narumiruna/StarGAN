@@ -34,7 +34,6 @@ class CelebDataset(Dataset):
             self.attr2idx[attr] = i
             self.idx2attr[i] = attr
 
-        self.selected_attrs = ['Black_Hair', 'Blond_Hair', 'Brown_Hair', 'Male', 'Young']
         self.train_filenames = []
         self.train_labels = []
         self.test_filenames = []
@@ -52,11 +51,10 @@ class CelebDataset(Dataset):
             for idx, value in enumerate(values):
                 attr = self.idx2attr[idx]
 
-                if attr in self.selected_attrs:
-                    if value == '1':
-                        label.append(1)
-                    else:
-                        label.append(0)
+                if value == '1':
+                    label.append(1)
+                else:
+                    label.append(0)
 
             if (i+1) < 2000:
                 self.test_filenames.append(filename)
